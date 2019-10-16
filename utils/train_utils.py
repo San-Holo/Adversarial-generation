@@ -63,26 +63,6 @@ def pipeline_gan_gp(parser, path, train=False):
         gan.train()
         gan.save(parser)
 
-def pipeline_gan_gp_ct(parser, path, train=False):
-    """NS GAN with gradient penalty and a consustecny term "Pipeline" from data loading to results. The two lists possibly used when creating
-        the GAN object are based on the original DCGAN paper. For any questions about their
-        modification, please refer to build_network_utils.py
-
-        Parameters
-        ----------
-        parser : dict
-            Contains all hyperparameters
-
-        path : String
-            Where the trained generator and discriminator will be saved, and results too
-
-        train : Boolean
-            If False, it will just create the object and visualize its content as a sanity check
-        """
-    gan = GAN_GP_CT(parser, path)
-    if train:
-        gan.train()
-        gan.save(parser)
 
 def pipeline_wgan(parser, path, train=False):
     """WGAN "Pipeline" from data loading to results. The two lists possibly used when creating
