@@ -25,7 +25,6 @@ from .gan_gp_ct import GANGP_CT as gan_gp_ct
 from .wgan import WGAN as wgan
 from .wgan_gp import WGANGP as wgan_gp
 from .wgan_gp_ct import WGANGP_CT as wgan_gp_ct
-from .utils import plot_losses, plot_image_samples
 
 # Networks and data utils
 from utils.build_gen import *
