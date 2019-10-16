@@ -17,7 +17,7 @@ if __name__== "__main__":
 
     
     # Example EXP - R (except LN in Wasserstein frameworks) - WITHOUT TTUR 
-    parser_gan, parser_gan_gp, parser_gan_gp_ct, parser_wgan, parser_wgan_gp, parser_wgan_gp_ct = load_parsers('./parsers/parsers_2D/parsers_R_FC_2D')
+    parser_gan, parser_gan_gp, parser_gan_gp_ct, parser_wgan, parser_wgan_gp, parser_wgan_gp_ct = load_parsers('./parsers/parsers_2D/parsers_LN_FC_2D')
     pipeline('gan', parser_gan, SAVE_DIR, train=True)
     pipeline('wgan', parser_wgan, SAVE_DIR, train=True)
     pipeline('wgan_gp', parser_wgan_gp, SAVE_DIR, train=True)
