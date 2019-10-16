@@ -32,7 +32,7 @@ from utils.build_gen import *
 from utils.build_disc import *
 from utils.build_gen_1D import *
 from utils.build_disc_1D import *
-from Datasets.data_encoders import *
+from data_loaders import * # To refactor based on your tree view
 
 # Save handlers
 import os
@@ -241,29 +241,6 @@ class GAN_GP(MODEL):
         self.hist_train['loss_g'] = G_losses
         self.hist_train['fixed_noises'] = img_list
         print("Training finished :)")
-
-class GAN_GP_CT(MODEL):
-    def __init__(self, parser, path):
-        """ To init a NS GAN with gradient penalty and a consistency term - https://arxiv.org/pdf/1803.01541.pdf"""
-        super().__init__(parser, path)
-        self.lambda_gp = parser.get('lambda_gp')
-        self.lambda_gp_ct = parser.get('lambda_gp_ct')
-        self.m_param = parser.get('m_param')
-        self.model = gan_gp_ct(self.generator, self.discriminator, self.train_loader, optimizer_D=self.doptimizer,
-                      optimizer_G=self.goptimizer, nz=self.latent_size, device=self.device,
-                      ngpu=1, fixed_noise_size=64, nr_epochs=self.epoch, save_every=1000,
-                      print_every=1, init_weights=True)
-
-    def train(self):
-        """Training function for wasserstein GAN with gradient penalty and a consistency term objects -> No parameters"""
-        super().train()
-        self.model.train(disc_iters=self.d_iters, long_disc_iters=self.long_d_iters, lambda_1=self.lambda_gp, lambda_2=self.lambda_gp_ct, M=self.m_param)
-        img_list, D_losses, G_losses = self.model.get_training_results()
-        self.hist_train['loss_d'] = D_losses
-        self.hist_train['loss_g'] = G_losses
-        self.hist_train['fixed_noises'] = img_list
-        print("Training finished :)")
-
 
 
 class WGAN(MODEL):
