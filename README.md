@@ -7,7 +7,7 @@ This repo is a tool that I use for several purposes, including a vanilla GAN, a 
 
 Everything is implemented with PyTorch, using its data structures to provide pipelines useful for GANs training. There is a "pipeline" for each type of model, and the former uses a JSON file to retrieve all wanted hyperparameters (see the example file in parsers). So, to train a new model, you just have to call one of the functions presented in the main python file, and change the written path to a parsed decription, if needed.
 
-Upcoming models:
+More models soon, such as:
 
 LSGAN,
 SAGAN,
